@@ -34,6 +34,14 @@ async function run() {
     const serviceCollection = client.db("onlineEduDB").collection("services");
 
     const bookingCollection = client.db("onlineEduDB").collection("bookings");
+    // ...........................................................
+    app.use((req, res, next) => {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+      next();
+    });
+    // ...........................................................
 
     //get
     app.get("/coffee", async (req, res) => {
